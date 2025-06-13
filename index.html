@@ -1,214 +1,591 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <meta name="description" content="Voxora System - Custom Built PCs tailored for gamers, professionals, and more."> 
-  <meta name="keywords" content="custom PCs, gaming PCs, Intel i7 PC, Ryzen 5 PC, affordable PCs, India"> 
-  <meta name="author" content="Voxora System"> 
-  <title>Voxora System - Custom Build PCs</title> 
-  <link href="https://fonts.googleapis.com/css2?family=Arial&display=swap" rel="stylesheet"> 
-  <style> 
-    body {  
-      font-family: Arial, sans-serif;  
-      margin: 0;  
-      padding: 0;  
-      background: #f4f4f4;  
-      box-sizing: border-box; 
-    } 
-    header, footer { 
-      background: #111;  
-      color: #fff;  
-      padding: 20px;  
-      width: 100%; 
-    } 
-    nav a {  
-      color: #fff;  
-      margin: 0 15px;  
-      text-decoration: none;  
-    } 
-    section {  
-      padding: 40px;  
-      text-align: center;  
-    } 
-    footer {  
-      text-align: center;  
-      padding: 10px;  
-    } 
-    .btn {  
-      background: #ff6600;  
-      color: #fff;  
-      padding: 10px 20px;  
-      border: none;  
-      border-radius: 5px;  
-      cursor: pointer;  
-      text-decoration: none;  
-      display: inline-block;  
-      margin: 10px 0;  
-    } 
-    .btn:hover {  
-      background: #e65c00;  
-    } 
-    .product {  
-      border: 1px solid #ddd;  
-      border-radius: 10px;  
-      padding: 20px;  
-      margin: 20px;  
-      width: 250px;  
-      background: #fff;  
-      display: inline-block;  
-      vertical-align: top; 
-      box-sizing: border-box; 
-    } 
-    .product img {  
-      width: 100%;  
-      border-radius: 10px;  
-    } 
-    .segment {  
-      margin-top: 60px;  
-    } 
-    .products-container { 
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: center; 
-      gap: 20px; 
-    } 
-    @media (max-width: 768px) { 
-      .product {  
-        width: 100%;  
-        margin: 10px 0;  
-      } 
-    } 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Voxora System - Custom Built PCs tailored for gamers, professionals, and more.">
+    <meta name="keywords" content="custom PCs, gaming PCs, Intel i7 PC, Ryzen 5 PC, affordable PCs, India">
+    <meta name="author" content="Voxora System">
+    <title>Voxora System - Custom Build PCs</title>
 
-    /* Popup Styles */
-    #popup {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    #popup .popup-content {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      max-width: 300px;
-      position: relative;
-    }
-    #popup img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    #popup button {
-      margin-top: 10px;
-      background: #ccc;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style> 
-</head> 
-<body> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <!-- Popup -->
-  <div id="popup">
-    <div class="popup-content">
-      <img src="https://m.media-amazon.com/images/I/71QXQAl0f7L._SL1500_.jpg" alt="Offer">
-      <h3>Billing & Student PCs</h3>
-      <p>Starting at just ₹9,999/-</p>
-      <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20budget%20PC%20starting%20from%209999" target="_blank" rel="noopener noreferrer" class="btn">Inquire on WhatsApp</a>
-      <br>
-      <button onclick="closePopup()">Close</button>
+    <style>
+        :root {
+            --primary-blue: #007bff; /* Standard Blue */
+            --light-blue: #e6f2ff;   /* Very light blue for background/accents */
+            --dark-blue: #0056b3;    /* Darker blue for hover/active states */
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light-gray: #666666;
+            --border-light: #dddddd;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--light-blue); /* Light blue background */
+            color: var(--text-dark);
+            box-sizing: border-box;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background: var(--primary-blue); /* Blue header */
+            color: var(--white);
+            padding: 20px 0;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 8px var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 0;
+            color: var(--white);
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: var(--white);
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.0em;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px; /* Space for underline effect */
+        }
+
+        nav a:hover {
+            color: var(--light-blue); /* Lighter blue on hover */
+            border-bottom: 2px solid var(--light-blue); /* Underline effect */
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+        }
+
+        section p {
+            font-size: 1.05em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-dark);
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 15px 10px; /* Adjusted margin to ensure proper spacing */
+            font-size: 1.0em;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px var(--shadow-light);
+            text-align: center; /* Ensure text inside button is centered */
+        }
+
+        .btn:hover {
+            background: var(--dark-blue); /* Darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Product Cards --- */
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product {
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px; /* Standard width */
+            background: var(--white); /* White card background */
+            color: var(--text-dark);
+            text-align: left;
+            box-shadow: 0 5px 15px var(--shadow-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product img {
+            width: 100%;
+            height: 180px; /* Consistent image height */
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-light);
+        }
+
+        .product h3 {
+            font-size: 1.5em;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .product p {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            color: var(--text-light-gray);
+            text-align: left;
+            flex-grow: 1; /* Allow description to take available space */
+        }
+
+        .product .btn {
+            width: calc(100% - 0px); /* Changed from 20px to 0px to allow padding to manage width */
+            margin: 0 auto; /* Center the button within the card */
+            display: block; /* Ensure button takes full width of its parent */
+            padding: 12px 0; /* Adjust padding for full-width button appearance */
+            text-align: center;
+        }
+
+        /* --- Segment Headings (For Product Categories) --- */
+        .segment {
+            font-size: 2.2em;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .segment::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-blue);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            border-radius: 2px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: 0 -4px 8px var(--shadow-light);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* --- Popup Styles (Standard & Clean) --- */
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Slightly lighter overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #popup .popup-content {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 350px;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border: 1px solid var(--primary-blue);
+        }
+
+        #popup.active .popup-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #popup img {
+            width: 90%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-light);
+        }
+
+        #popup h3 {
+            color: var(--primary-blue);
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        #popup p {
+            color: var(--text-dark);
+            font-size: 1.0em;
+            margin-bottom: 20px;
+        }
+
+        #popup .btn {
+            width: auto; /* Revert width for popup button */
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding: 12px 25px; /* Revert padding for popup button */
+            display: inline-block; /* Ensure it's not block level in popup */
+        }
+
+        #popup button.close-btn {
+            background: #cccccc;
+            color: var(--text-dark);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        #popup button.close-btn:hover {
+            background: #aaaaaa;
+        }
+
+        /* --- Mobile Responsiveness (Standard approach) --- */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            nav {
+                display: flex;
+                flex-direction: column; /* Stack navigation items vertically */
+                gap: 10px;
+            }
+            nav a {
+                margin: 5px 0;
+                font-size: 0.95em;
+            }
+            section {
+                padding: 30px 15px;
+            }
+            section h2 {
+                font-size: 1.8em;
+            }
+            section p {
+                font-size: 0.95em;
+            }
+            .product {
+                width: 90%; /* Occupy more width on smaller screens */
+                max-width: 320px; /* Limit max width for readability */
+                margin: 15px auto; /* Center products */
+            }
+            .segment {
+                font-size: 1.8em;
+                margin-top: 40px;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            #popup .popup-content {
+                width: 90%;
+                max-width: 300px;
+                padding: 20px;
+            }
+            #popup h3 {
+                font-size: 1.4em;
+            }
+            #popup p {
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px 0;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            section h2 {
+                font-size: 1.6em;
+            }
+            .product {
+                padding: 15px;
+            }
+            .product h3 {
+                font-size: 1.3em;
+            }
+            .product p {
+                font-size: 0.85em;
+            }
+        }
+
+        /* --- Scroll to Top Button --- */
+        #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.3em;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        /* --- Simple Animations for a clean look (optional, but good for UX) --- */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .product.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="popup">
+        <div class="popup-content">
+            <img src="https://m.media-amazon.com/images/I/71QXQAl0f7L._SL1500_.jpg" alt="Offer">
+            <h3>Billing & Student PCs</h3>
+            <p>Starting at just ₹9,999/-</p>
+            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20budget%20PC%20starting%20from%209999" target="_blank" rel="noopener noreferrer" class="btn">Inquire on WhatsApp</a>
+            <button onclick="closePopup()" class="close-btn">Close</button>
+        </div>
     </div>
-  </div>
 
-  <header> 
-    <h1>Voxora System</h1> 
-    <p>Your Destination for Custom Build PCs</p> 
-    <nav> 
-      <a href="#about">About</a> 
-      <a href="#products">Products</a> 
-      <a href="#contact">Contact</a> 
-    </nav> 
-  </header> 
+    <button id="scrollToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-  <section id="about"> 
-    <h2>About Voxora System</h2> 
-    <p>At Voxora System, we specialize in building high-performance custom PCs tailored to your needs. Whether you're a gamer, student, or professional, we've got the perfect setup for you.</p> 
-  </section> 
+    <header>
+        <h1>Voxora System</h1>
+        <p>Your Destination for Custom Build PCs</p>
+        <nav>
+            <a href="#about">About Us</a>
+            <a href="#gaming-pcs">Gaming PCs</a>
+            <a href="#student-pcs">Student PCs</a>
+            <a href="#office-creator-pcs">Office & Creator PCs</a>
+            <a href="#budget-pcs">Budget PCs</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <section id="products"> 
-    <h2>Gaming PCs</h2> 
-    <div class="products-container"> 
-      <div class="product"> 
-        <img src="https://m.media-amazon.com/images/I/81e4W30JMgL._SL1500_.jpg" alt="Voxora Pulse Ryzen 5 Edition"> 
-        <h3>Voxora Pulse Ryzen 5 Edition</h3> 
-        <p>AMD Ryzen 5, 16GB RAM, RTX 4060, 512GB SSD</p> 
-        <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Ryzen%205%20Edition" target="_blank" rel="noopener noreferrer">Inquire on WhatsApp</a> 
-      </div> 
+    <section id="about">
+        <h2>About Voxora System</h2>
+        <p>At Voxora System, we specialize in building high-performance custom PCs tailored to your needs. Whether you're a gamer, student, or professional, we've got the perfect setup for you. Our commitment to quality, performance, and customer satisfaction sets us apart.</p>
+    </section>
 
-      <div class="product"> 
-        <img src="https://m.media-amazon.com/images/I/61Cth40a4dL._SL1308_.jpg" alt="Voxora Pulse Ryzen 7 Pro"> 
-        <h3>Voxora Pulse Ryzen 7 Pro</h3> 
-        <p>AMD Ryzen 7, 32GB RAM, RTX 4070, 1TB SSD</p> 
-        <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Ryzen%207%20Pro" target="_blank" rel="noopener noreferrer">Inquire on WhatsApp</a> 
-      </div> 
+    <section id="products">
+        <h2 id="gaming-pcs">Gaming PCs</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81e4W30JMgL._SL1500_.jpg" alt="Voxora Pulse Ryzen 5 Edition">
+                <h3>Voxora Pulse Ryzen 5 Edition</h3>
+                <p>Equipped with AMD Ryzen 5, 16GB RAM, and a powerful RTX 4060 graphics card, alongside a rapid 512GB SSD. Perfect for mainstream gaming and demanding applications.</p>
+                <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Ryzen%205%20Edition" target="_blank" rel="noopener noreferrer">Inquire Now</a>
+            </div>
 
-      <h2 class="segment">Student PCs</h2> 
-      <div class="product"> 
-        <img src="https://m.media-amazon.com/images/I/71QXQAl0f7L._SL1500_.jpg" alt="Voxora Pulse Intel i5 Gamer"> 
-        <h3>Voxora Pulse Intel i5 Gamer</h3> 
-        <p>Intel Core i5, 16GB RAM, GTX 1660, 512GB SSD</p> 
-        <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Intel%20i5%20Gamer" target="_blank" rel="noopener noreferrer">Inquire on WhatsApp</a> 
-      </div> 
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/61Cth40a4dL._SL1308_.jpg" alt="Voxora Pulse Ryzen 7 Pro">
+                <h3>Voxora Pulse Ryzen 7 Pro</h3>
+                <p>Unleash extreme performance with AMD Ryzen 7, 32GB RAM, a top-tier RTX 4070, and a massive 1TB SSD. Designed for enthusiast gaming and professional content creation.</p>
+                <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Ryzen%207%20Pro" target="_blank" rel="noopener noreferrer">Inquire Now</a>
+            </div>
+        </div>
 
-      <h2 class="segment">Office & Creator PCs</h2> 
-      <div class="product"> 
-        <img src="https://m.media-amazon.com/images/I/71bsKWUOngL._SL1500_.jpg" alt="Voxora Pulse Intel i7 Creator"> 
-        <h3>Voxora Pulse Intel i7 Creator</h3> 
-        <p>Intel Core i7, 32GB RAM, RTX 4060 Ti, 1TB SSD</p> 
-        <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Intel%20i7%20Creator" target="_blank" rel="noopener noreferrer">Inquire on WhatsApp</a> 
-      </div> 
+        <h2 class="segment" id="student-pcs">Student PCs</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71QXQAl0f7L._SL1500_.jpg" alt="Voxora Pulse Intel i5 Gamer">
+                <h3>Voxora Pulse Intel i5 Gamer</h3>
+                <p>A versatile choice for students and casual gamers, featuring Intel Core i5, 16GB RAM, GTX 1660, and a responsive 512GB SSD. Balance of power and affordability.</p>
+                <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Intel%20i5%20Gamer" target="_blank" rel="noopener noreferrer">Inquire Now</a>
+            </div>
+        </div>
 
-      <h2 class="segment">Budget PCs (Under ₹20,000)</h2> 
-      <div class="product"> 
-        <img src="https://m.media-amazon.com/images/I/71eDyEwmwJL._SL1500_.jpg" alt="Voxora Pulse Basic Billing PC"> 
-        <h3>Voxora Pulse Basic Billing PC</h3> 
-        <p>Intel Dual Core, 4GB RAM, 240GB SSD, Perfect for billing and office tasks</p> 
-        <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Basic%20Billing%20PC" target="_blank" rel="noopener noreferrer">Inquire on WhatsApp</a> 
-      </div> 
-    </div> 
-  </section> 
+        <h2 class="segment" id="office-creator-pcs">Office & Creator PCs</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71bsKWUOngL._SL1500_.jpg" alt="Voxora Pulse Intel i7 Creator">
+                <h3>Voxora Pulse Intel i7 Creator</h3>
+                <p>Built for demanding office tasks and content creation. Powered by Intel Core i7, 32GB RAM, RTX 4060 Ti, and a blazing-fast 1TB SSD. Ideal for multitasking and heavy workloads.</p>
+                <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Intel%20i7%20Creator" target="_blank" rel="noopener noreferrer">Inquire Now</a>
+            </div>
+        </div>
 
-  <section id="contact"> 
-    <h2>Contact Us</h2> 
-    <p>Email: voxoraofficial@gmail.com</p> 
-    <p>Phone: +91 75930 99542</p> 
-  </section> 
+        <h2 class="segment" id="budget-pcs">Budget PCs (Under ₹20,000)</h2>
+        <div class="products-container">
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71eDyEwmwJL._SL1500_.jpg" alt="Voxora Pulse Basic Billing PC">
+                <h3>Voxora Pulse Basic Billing PC</h3>
+                <p>An economical choice for essential computing. Features Intel Dual Core, 4GB RAM, and a 240GB SSD. Perfect for billing, office tasks, and everyday Browse.</p>
+                <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Basic%20Billing%20PC" target="_blank" rel="noopener noreferrer">Inquire Now</a>
+            </div>
+        </div>
+    </section>
 
-  <footer> 
-    <p>&copy; 2025 Voxora System</p> 
-  </footer> 
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>We're here to help you build your dream PC. Reach out to us for custom quotes and support.</p>
+        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:voxoraofficial@gmail.com" style="color: var(--primary-blue); text-decoration: none;">voxoraofficial@gmail.com</a></p>
+        <p><i class="fas fa-phone-alt"></i> Phone: <a href="tel:+917593099542" style="color: var(--primary-blue); text-decoration: none;">+91 75930 99542</a></p>
+        <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/917593099542" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue); text-decoration: none;">Chat on WhatsApp</a></p>
+    </section>
 
-  <script>
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
-    }
+    <footer>
+        <p>&copy; 2025 Voxora System. All rights reserved.</p>
+    </footer>
 
-    window.onload = function() {
-      if (!sessionStorage.getItem('popupShown')) {
-        document.getElementById('popup').style.display = 'flex';
-        sessionStorage.setItem('popupShown', 'true');
-      } else {
-        document.getElementById('popup').style.display = 'none';
-      }
-    };
-  </script>
+    <script>
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').classList.remove('active');
+        }
 
-</body> 
+        // Show popup only once per session
+        window.onload = function() {
+            if (!sessionStorage.getItem('popupShown')) {
+                setTimeout(() => { // Add a slight delay for better UX
+                    document.getElementById('popup').classList.add('active');
+                    sessionStorage.setItem('popupShown', 'true');
+                }, 1000); // Popup appears after 1 second
+            } else {
+                document.getElementById('popup').classList.remove('active');
+            }
+        };
+
+        // Scroll to Top Button functionality
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+
+        scrollToTopBtn.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // Intersection Observer for scroll animations (basic fade-in for standard look)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // When 10% of the element is in view
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections and products
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        document.querySelectorAll('.product').forEach(product => {
+            observer.observe(product);
+        });
+    </script>
+
+</body>
 </html>
