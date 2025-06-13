@@ -27,7 +27,7 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: var(--light-blue); /* Light blue background */
+            background: var(--light-blue);
             color: var(--text-dark);
             box-sizing: border-box;
             line-height: 1.6;
@@ -36,46 +36,84 @@
 
         /* --- Header & Navigation --- */
         header {
-            background: var(--primary-blue); /* Blue header */
+            background: var(--primary-blue);
             color: var(--white);
-            padding: 20px 0;
+            padding: 20px 15px; /* Added horizontal padding */
             width: 100%;
             text-align: center;
             box-shadow: 0 4px 8px var(--shadow-light);
             position: sticky;
             top: 0;
             z-index: 999;
+            box-sizing: border-box;
+            transition: padding 0.3s ease, height 0.3s ease; /* Smooth transition for height/padding */
+        }
+
+        header.scrolled { /* Class added by JS when scrolled */
+            padding: 10px 15px; /* Smaller padding when scrolled */
+            height: 60px; /* Fixed height when scrolled for consistent look */
+            display: flex; /* Use flexbox to align items when collapsed */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally (if only title visible) */
+            overflow: hidden; /* Hide overflowing content like tagline/nav */
         }
 
         header h1 {
             font-size: 2.5em;
             margin-bottom: 5px;
             color: var(--white);
+            transition: font-size 0.3s ease, margin-bottom 0.3s ease;
         }
 
+        header.scrolled h1 {
+            font-size: 1.8em; /* Smaller font size for title when scrolled */
+            margin-bottom: 0;
+            margin-right: 0; /* No margin on right when nav is hidden */
+        }
+        
         header p {
             font-size: 1.1em;
             margin-top: 0;
             color: var(--white);
+            transition: opacity 0.3s ease, height 0.3s ease, margin-top 0.3s ease;
+        }
+
+        header.scrolled p {
+            opacity: 0; /* Hide tagline when scrolled */
+            height: 0;
+            margin-top: -10px; /* Collapse margin */
+            visibility: hidden; /* Ensure it doesn't take space */
         }
 
         nav {
             margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            transition: opacity 0.3s ease, height 0.3s ease, margin-top 0.3s ease;
+        }
+
+        header.scrolled nav {
+            opacity: 0; /* Hide navigation when scrolled */
+            height: 0;
+            margin-top: -10px; /* Collapse margin */
+            visibility: hidden; /* Ensure it doesn't take space */
         }
 
         nav a {
             color: var(--white);
-            margin: 0 15px;
             text-decoration: none;
             font-weight: 500;
             font-size: 1.0em;
             transition: color 0.3s ease, border-bottom 0.3s ease;
-            padding-bottom: 5px; /* Space for underline effect */
+            padding-bottom: 5px;
+            white-space: nowrap;
         }
 
         nav a:hover {
-            color: var(--light-blue); /* Lighter blue on hover */
-            border-bottom: 2px solid var(--light-blue); /* Underline effect */
+            color: var(--light-blue);
+            border-bottom: 2px solid var(--light-blue);
         }
 
         /* --- Sections --- */
@@ -84,6 +122,7 @@
             text-align: center;
             max-width: 1200px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         section h2 {
@@ -109,16 +148,16 @@
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            margin: 15px 10px; /* Adjusted margin to ensure proper spacing */
+            margin: 15px 10px;
             font-size: 1.0em;
             font-weight: 500;
             transition: background 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px var(--shadow-light);
-            text-align: center; /* Ensure text inside button is centered */
+            text-align: center;
         }
 
         .btn:hover {
-            background: var(--dark-blue); /* Darker blue on hover */
+            background: var(--dark-blue);
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
@@ -136,8 +175,8 @@
             border: 1px solid var(--border-light);
             border-radius: 8px;
             padding: 20px;
-            width: 300px; /* Standard width */
-            background: var(--white); /* White card background */
+            width: 300px;
+            background: var(--white);
             color: var(--text-dark);
             text-align: left;
             box-shadow: 0 5px 15px var(--shadow-light);
@@ -145,6 +184,7 @@
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
         }
 
         .product:hover {
@@ -154,7 +194,7 @@
 
         .product img {
             width: 100%;
-            height: 180px; /* Consistent image height */
+            height: 180px;
             object-fit: cover;
             border-radius: 5px;
             margin-bottom: 15px;
@@ -173,15 +213,14 @@
             margin-bottom: 15px;
             color: var(--text-light-gray);
             text-align: left;
-            flex-grow: 1; /* Allow description to take available space */
+            flex-grow: 1;
         }
 
         .product .btn {
-            width: calc(100% - 0px); /* Changed from 20px to 0px to allow padding to manage width */
-            margin: 0 auto; /* Center the button within the card */
-            display: block; /* Ensure button takes full width of its parent */
-            padding: 12px 0; /* Adjust padding for full-width button appearance */
-            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+            padding: 12px 0;
         }
 
         /* --- Segment Headings (For Product Categories) --- */
@@ -216,6 +255,7 @@
             text-align: center;
             margin-top: 60px;
             box-shadow: 0 -4px 8px var(--shadow-light);
+            box-sizing: border-box;
         }
 
         footer p {
@@ -230,7 +270,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Slightly lighter overlay */
+            background: rgba(0, 0, 0, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -251,11 +291,13 @@
             border-radius: 10px;
             text-align: center;
             max-width: 350px;
+            width: 90%;
             position: relative;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             transform: translateY(20px);
             transition: transform 0.3s ease, opacity 0.3s ease;
             border: 1px solid var(--primary-blue);
+            box-sizing: border-box;
         }
 
         #popup.active .popup-content {
@@ -285,11 +327,11 @@
         }
 
         #popup .btn {
-            width: auto; /* Revert width for popup button */
+            width: auto;
             margin-top: 0;
             margin-bottom: 15px;
-            padding: 12px 25px; /* Revert padding for popup button */
-            display: inline-block; /* Ensure it's not block level in popup */
+            padding: 12px 25px;
+            display: inline-block;
         }
 
         #popup button.close-btn {
@@ -307,7 +349,7 @@
             background: #aaaaaa;
         }
 
-        /* --- Mobile Responsiveness (Standard approach) --- */
+        /* --- Mobile Responsiveness (Adjusted for Header and Scroll Button) --- */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2em;
@@ -316,13 +358,23 @@
                 font-size: 0.9em;
             }
             nav {
-                display: flex;
-                flex-direction: column; /* Stack navigation items vertically */
+                flex-direction: column;
                 gap: 10px;
+                align-items: center;
             }
             nav a {
-                margin: 5px 0;
+                margin: 0;
                 font-size: 0.95em;
+                width: fit-content;
+                padding: 5px 10px;
+                border-radius: 5px;
+                background: rgba(255, 255, 255, 0.1);
+            }
+            nav a:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+            nav a::after {
+                content: none;
             }
             section {
                 padding: 30px 15px;
@@ -334,9 +386,9 @@
                 font-size: 0.95em;
             }
             .product {
-                width: 90%; /* Occupy more width on smaller screens */
-                max-width: 320px; /* Limit max width for readability */
-                margin: 15px auto; /* Center products */
+                width: 90%;
+                max-width: 320px;
+                margin: 15px auto;
             }
             .segment {
                 font-size: 1.8em;
@@ -357,15 +409,30 @@
             #popup p {
                 font-size: 0.95em;
             }
+
+            /* --- Scroll to Top Button adjustment for mobile --- */
+            #scrollToTopBtn {
+                bottom: 80px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2em;
+                line-height: 40px;
+            }
         }
 
         @media (max-width: 480px) {
             header {
-                padding: 15px 0;
+                padding: 15px 10px;
             }
             header h1 {
                 font-size: 1.8em;
             }
+            /* Adjusted font size for scrolled header title on very small screens */
+            header.scrolled h1 {
+                font-size: 1.5em; 
+            }
+
             section h2 {
                 font-size: 1.6em;
             }
@@ -378,35 +445,17 @@
             .product p {
                 font-size: 0.85em;
             }
+            #scrollToTopBtn {
+                bottom: 70px;
+                right: 10px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.1em;
+                line-height: 38px;
+            }
         }
 
-        /* --- Scroll to Top Button --- */
-        #scrollToTopBtn {
-            display: none; /* Hidden by default */
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-            background-color: var(--primary-blue);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 1.3em;
-            line-height: 45px;
-            text-align: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        #scrollToTopBtn:hover {
-            background-color: var(--dark-blue);
-            transform: translateY(-2px);
-        }
-
-        /* --- Simple Animations for a clean look (optional, but good for UX) --- */
+        /* --- Simple Animations for a clean look --- */
         section {
             opacity: 0;
             transform: translateY(20px);
@@ -540,17 +589,22 @@
                     sessionStorage.setItem('popupShown', 'true');
                 }, 1000); // Popup appears after 1 second
             } else {
-                document.getElementById('popup').classList.remove('active');
+                document.getElementById('popup').style.display = 'none'; // Directly hide if already shown
             }
         };
 
         // Scroll to Top Button functionality
         const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        const header = document.querySelector('header');
 
         window.onscroll = function() {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            const scrollThreshold = 100; // Pixels scrolled before header collapses
+
+            if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+                header.classList.add('scrolled');
                 scrollToTopBtn.style.display = "block";
             } else {
+                header.classList.remove('scrolled');
                 scrollToTopBtn.style.display = "none";
             }
         };
@@ -562,23 +616,22 @@
             });
         });
 
-        // Intersection Observer for scroll animations (basic fade-in for standard look)
+        // Intersection Observer for scroll animations
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.1 // When 10% of the element is in view
+            threshold: 0.1
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animated');
-                    observer.unobserve(entry.target); // Stop observing once animated
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe sections and products
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
