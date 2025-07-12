@@ -632,42 +632,79 @@
             }
         }
 
-        .gpu-slider {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    margin: 40px auto;
-    max-width: 1200px;
+        .gpu-carousel-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 30px auto;
+  overflow: hidden;
+  padding: 0 40px;
 }
 
-.gpu-slide-track {
-    display: flex;
-    animation: scrollSlider 20s linear infinite;
-    gap: 20px;
+.gpu-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 0;
 }
 
-.gpu-slide-track a {
-    flex: 0 0 auto;
-    transition: transform 0.3s ease;
+.gpu-carousel::-webkit-scrollbar {
+  display: none;
 }
 
-.gpu-slide-track a:hover {
-    transform: scale(1.05);
+.gpu-carousel a {
+  flex: 0 0 auto;
+  transition: transform 0.3s ease;
 }
 
-.gpu-slide-track img {
-    width: 250px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 2px solid var(--border-light);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.gpu-carousel a:hover {
+  transform: scale(1.05);
 }
 
-/* Keyframes for auto-scrolling */
-@keyframes scrollSlider {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.gpu-carousel img {
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--border-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gpu-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  font-size: 1.2em;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.gpu-scroll-btn:hover {
+  background: var(--dark-blue);
+}
+
+.gpu-scroll-btn.left {
+  left: 10px;
+}
+
+.gpu-scroll-btn.right {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .gpu-carousel img {
+    width: 200px;
+    height: 120px;
+  }
+  .gpu-scroll-btn {
+    display: none; /* Hide arrows on mobile for touch scroll */
+  }
 }
 
 /* Responsive tweak */
@@ -767,6 +804,7 @@
             <a href="#about">About Us</a>
             <a href="#features">Why Choose Us</a>
             <a href="#products">Products</a>
+            <a href="#gpus">Graphics Cards</a>
             <a href="#service-request">Service Request</a>
             <a href="#amc-organization">AMC & Maint.</a> <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
@@ -854,28 +892,35 @@
     </section>
 
     <section id="gpus">
-    <h2 class="segment">Graphics Cards</h2>
-    <div class="gpu-slider">
-        <div class="gpu-slide-track">
-            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20GTX%201000series">
-                <img src="1060.jpg" alt="GTX 1660">
-            </a>
-            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20RTX%202000series">
-                <img src="2060.jpg" alt="RTX 2060">
-            </a>
-            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20RTX%203000series">
-                <img src="3060.jpg" alt="RTX 3060">
-            </a>
-            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20RTX%204000series">
-                <img src="4060.jpg" alt="RTX 4070">
-            </a>
-            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20RTX%205000series">
-                <img src="5060.jpg" alt="RTX 5080">
-            </a>
-        </div>
-    </div>
-    </section>
+  <h2 class="segment">Graphics Cards</h2>
+  <div class="gpu-carousel-wrapper">
+    <button class="gpu-scroll-btn left" onclick="scrollGPUs(-1)">
+      <i class="fas fa-chevron-left"></i>
+    </button>
 
+    <div class="gpu-carousel" id="gpuCarousel">
+      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%201000%20series">
+        <img src="1660.jpg" alt="GTX 1660 - 1000 Series">
+      </a>
+      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%202000%20series">
+        <img src="2060.jpg" alt="RTX 2060 - 2000 Series">
+      </a>
+      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%203000%20series">
+        <img src="3060.jpg" alt="RTX 3060 - 3000 Series">
+      </a>
+      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%204000%20series">
+        <img src="4060.jpg" alt="RTX 4060 - 4000 Series">
+      </a>
+      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%205000%20series">
+        <img src="5060.jpg" alt="RTX 5060 - 5000 Series">
+      </a>
+    </div>
+
+    <button class="gpu-scroll-btn right" onclick="scrollGPUs(1)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+    </section>
     <section id="service-request">
         <h2>Service Request</h2>
         <p>Need assistance with your existing PC or looking for an upgrade? Fill out the form below, and our experts will get back to you shortly.</p>
@@ -1041,6 +1086,15 @@
         document.querySelectorAll('#service-request .request-form-container, #amc-organization .amc-content, #amc-organization ul li').forEach(item => { // Changed ID in JS
             observer.observe(item);
         });
+        // === GPU Carousel Manual Scroll Buttons ===
+function scrollGPUs(direction) {
+    const container = document.getElementById('gpuCarousel');
+    const scrollAmount = 280; // Amount to scroll each time
+    container.scrollBy({
+        left: scrollAmount * direction,
+        behavior: 'smooth'
+    });
+}
     </script>
 
 </body>
