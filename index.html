@@ -499,11 +499,12 @@
         }
 
         #popup img {
-            width: 90%;
-            max-height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            object-fit: contain;
             margin-bottom: 15px;
+            border-radius: 8px;
             border: 1px solid var(--border-light);
         }
 
@@ -630,6 +631,52 @@
                 width: 100%; /* Full width on mobile */
             }
         }
+
+        .gpu-slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.gpu-slide-track {
+    display: flex;
+    animation: scrollSlider 20s linear infinite;
+    gap: 20px;
+}
+
+.gpu-slide-track a {
+    flex: 0 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.gpu-slide-track a:hover {
+    transform: scale(1.05);
+}
+
+.gpu-slide-track img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--border-light);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Keyframes for auto-scrolling */
+@keyframes scrollSlider {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+    .gpu-slide-track img {
+        width: 200px;
+        height: 120px;
+    }
+}
 
         @media (max-width: 480px) {
             header {
@@ -804,6 +851,29 @@
                 <a class="btn" href="https://wa.me/917593099542?text=I'm%20interested%20in%20Voxora%20Pulse%20Basic%20Billing%20PC" target="_blank" rel="noopener noreferrer">Inquire Now</a>
             </div>
         </div>
+    </section>
+
+    <section id="gpus">
+    <h2 class="segment">Graphics Cards</h2>
+    <div class="gpu-slider">
+        <div class="gpu-slide-track">
+            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20GTX%201060">
+                <img src="https://via.placeholder.com/250x150?text=GTX+1060" alt="GTX 1060">
+            </a>
+            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20RTX%202060">
+                <img src="https://via.placeholder.com/250x150?text=RTX+2060" alt="RTX 2060">
+            </a>
+            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20RTX%203060">
+                <img src="https://via.placeholder.com/250x150?text=RTX+3060" alt="RTX 3060">
+            </a>
+            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20RTX%204070">
+                <img src="https://via.placeholder.com/250x150?text=RTX+4070" alt="RTX 4070">
+            </a>
+            <a href="https://wa.me/917593099542?text=I'm%20interested%20in%20RTX%205080">
+                <img src="https://via.placeholder.com/250x150?text=RTX+5080" alt="RTX 5080">
+            </a>
+        </div>
+    </div>
     </section>
 
     <section id="service-request">
