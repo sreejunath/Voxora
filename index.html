@@ -632,7 +632,7 @@
             }
         }
 
-        .gpu-carousel-wrapper {
+.gpu-carousel-wrapper {
   position: relative;
   max-width: 1200px;
   margin: 30px auto;
@@ -646,28 +646,43 @@
   scroll-behavior: smooth;
   gap: 20px;
   padding: 20px 0;
+  animation: autoScroll 30s linear infinite;
+}
+
+@keyframes autoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .gpu-carousel::-webkit-scrollbar {
   display: none;
 }
 
-.gpu-carousel a {
+.gpu-card {
   flex: 0 0 auto;
-  transition: transform 0.3s ease;
-}
-
-.gpu-carousel a:hover {
-  transform: scale(1.05);
-}
-
-.gpu-carousel img {
+  text-align: center;
   width: 250px;
+}
+
+.gpu-card img {
+  width: 100%;
   height: 150px;
   object-fit: cover;
   border-radius: 8px;
   border: 2px solid var(--border-light);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gpu-card img:hover {
+  transform: scale(1.05);
+}
+
+.gpu-series-name {
+  margin-top: 10px;
+  font-weight: bold;
+  color: var(--primary-blue);
+  font-size: 1em;
 }
 
 .gpu-scroll-btn {
@@ -698,23 +713,18 @@
 }
 
 @media (max-width: 768px) {
-  .gpu-carousel img {
+  .gpu-card {
     width: 200px;
+  }
+
+  .gpu-card img {
     height: 120px;
   }
+
   .gpu-scroll-btn {
-    display: none; /* Hide arrows on mobile for touch scroll */
+    display: none;
   }
 }
-
-/* Responsive tweak */
-@media (max-width: 768px) {
-    .gpu-slide-track img {
-        width: 200px;
-        height: 120px;
-    }
-}
-
         @media (max-width: 480px) {
             header {
                 padding: 15px 10px;
@@ -899,21 +909,36 @@
     </button>
 
     <div class="gpu-carousel" id="gpuCarousel">
-      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%201000%20series">
-        <img src="1660.jpg" alt="GTX 1660 - 1000 Series">
-      </a>
-      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%202000%20series">
-        <img src="2060.jpg" alt="RTX 2060 - 2000 Series">
-      </a>
-      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%203000%20series">
-        <img src="3060.jpg" alt="RTX 3060 - 3000 Series">
-      </a>
-      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%204000%20series">
-        <img src="4060.jpg" alt="RTX 4060 - 4000 Series">
-      </a>
-      <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%205000%20series">
-        <img src="5060.jpg" alt="RTX 5060 - 5000 Series">
-      </a>
+      <div class="gpu-card">
+        <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%201000%20series">
+          <img src="1660.jpg" alt="GTX 1660 - 1000 Series">
+          <p class="gpu-series-name">1000 Series</p>
+        </a>
+      </div>
+      <div class="gpu-card">
+        <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%202000%20series">
+          <img src="2060.jpg" alt="RTX 2060 - 2000 Series">
+          <p class="gpu-series-name">2000 Series</p>
+        </a>
+      </div>
+      <div class="gpu-card">
+        <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%203000%20series">
+          <img src="3060.jpg" alt="RTX 3060 - 3000 Series">
+          <p class="gpu-series-name">3000 Series</p>
+        </a>
+      </div>
+      <div class="gpu-card">
+        <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%204000%20series">
+          <img src="4060.jpg" alt="RTX 4060 - 4000 Series">
+          <p class="gpu-series-name">4000 Series</p>
+        </a>
+      </div>
+      <div class="gpu-card">
+        <a href="https://wa.me/917593099542?text=I%20want%20to%20know%20about%20the%205000%20series">
+          <img src="5060.jpg" alt="RTX 5060 - 5000 Series">
+          <p class="gpu-series-name">5000 Series</p>
+        </a>
+      </div>
     </div>
 
     <button class="gpu-scroll-btn right" onclick="scrollGPUs(1)">
