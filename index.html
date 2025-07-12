@@ -779,6 +779,49 @@
             transform: translateY(0);
         }
 
+
+        #service-cards {
+        padding: 60px 20px;
+        text-align: center;
+        background: #f8f9ff;
+        margin-top: 40px;
+    }
+    #service-cards h2 {
+        font-size: 2.2em;
+        margin-bottom: 20px;
+        color: var(--primary-blue);
+    }
+    #service-cards .product ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+    #service-cards .product ul li {
+        margin-bottom: 8px;
+        color: var(--text-dark);
+    }
+    .blue-card {
+        border-left: 5px solid #3399ff;
+    }
+    .silver-card {
+        border-left: 5px solid #cccccc;
+    }
+    .gold-card {
+        border-left: 5px solid #ffcc00;
+    }
+    .qr-code {
+        width: 100%;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .price {
+        font-weight: bold;
+        color: #333;
+        margin: 10px 0;
+    }
+</style>
+
     </style>
 </head>
 <body>
@@ -941,6 +984,57 @@
     </button>
   </div>
     
+    </section>
+    
+    <section id="service-cards">
+    <h2>Voxora Service Membership Cards</h2>
+    <p>Join our exclusive service program to get 1 year of free support, cleaning, and discounts based on your card level. Choose the plan that fits your needs.</p>
+
+    <div class="products-container">
+        <!-- Blue Card -->
+        <div class="product blue-card">
+            <h3>Blue Card</h3>
+            <p class="price">₹999 for 1 Year</p>
+            <ul>
+                <li>✔️ Basic Service</li>
+                <li>✔️ Dust Cleaning (1 time)</li>
+            </ul>
+            <a class="btn" href="upi://pay?pa=7593099542@yapl&pn=Voxora%20System&am=999&cu=INR">
+                Buy Blue Card via UPI
+            </a>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=7593099542@yapl&pn=Voxora%20System&am=999&cu=INR&size=200x200" alt="Blue Card QR" class="qr-code">
+        </div>
+
+        <!-- Silver Card -->
+        <div class="product silver-card">
+            <h3>Silver Card</h3>
+            <p class="price">₹1200 for 1 Year</p>
+            <ul>
+                <li>✔️ Basic Service</li>
+                <li>✔️ Dust Cleaning (2 times)</li>
+                <li>✔️ Priority Support</li>
+            </ul>
+            <a class="btn" href="upi://pay?pa=7593099542@yapl&pn=Voxora%20System&am=1200&cu=INR">
+                Buy Silver Card via UPI
+            </a>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=7593099542@yapl&pn=Voxora%20System&am=1200&cu=INR&size=200x200" alt="Silver Card QR" class="qr-code">
+        </div>
+
+        <!-- Gold Card -->
+        <div class="product gold-card">
+            <h3>Gold Card</h3>
+            <p class="price">₹1999 for 1 Year</p>
+            <ul>
+                <li>✔️ All Silver Card Benefits</li>
+                <li>✔️ Free Service (2 times)</li>
+                <li>✔️ 10% Off on Future Purchases</li>
+            </ul>
+            <a class="btn" href="upi://pay?pa=7593099542@yapl&pn=Voxora%20System&am=1999&cu=INR">
+                Buy Gold Card via UPI
+            </a>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=7593099542@yapl&pn=Voxora%20System&am=1999&cu=INR&size=200x200" alt="Gold Card QR" class="qr-code">
+        </div>
+    </div>
     </section>
     
     <section id="service-request">
